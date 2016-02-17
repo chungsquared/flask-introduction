@@ -1,14 +1,18 @@
 # import the Flask class from the flask module
 from flask import Flask, render_template, redirect, url_for, request, session, flash, g 
+from flask.ext.sqlalchemy import SQLAlchemy
 from functools import wraps
 import sqlite3
 
 # create the application object
 app = Flask(__name__)
-# Secret Key for sessions
-app.secret_key = "Not So Secret Key"
-# connect db
-app.database = "smple.db"
+
+# config
+import os
+app.config.from_object(os.environ['APP_SETTINGS'])
+print os.environ['APP_SETTINGS']
+
+
 
 
 # login required decorator
@@ -66,4 +70,4 @@ def connect_db():
 	return sqlite3.connect(app.database)
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()
