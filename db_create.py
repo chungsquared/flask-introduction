@@ -7,6 +7,8 @@ db.create_all()
 # insert
 db.session.add(BlogPost("Good", "I\'m good."))
 db.session.add(BlogPost("Well", "I\'m well."))
+db.session.add(BlogPost("Flask", "discoverflask.com"))
+db.session.add(BlogPost("Postegres", "we setup a local postgres db"))
 
 # commit the changes
 db.session.commit()
